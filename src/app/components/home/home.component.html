@@ -1,0 +1,60 @@
+<div class="outer_container">
+
+  <div class="big_container">
+    <div class="top_bar">
+      <div class="notice">Buscar Vuelos 
+        <div class="sub-text" *ngIf="loading">CARGANDO VUELOS, ¡ESPERE POR FAVOR!</div>
+      </div>
+    </div>
+    <div class="transparent_bg">
+      <div class="container">
+        <div class="search_pane"> 
+          <div class="search_box">
+            <select [(ngModel)]="selectedOrigin">
+              <option value="" disabled selected>Desde</option>
+              <option *ngFor ="let result of filteredOriginList; let i=index" value={{result.origin}} >{{result.origin}}</option>
+            </select>
+          </div>
+          <div class="search_box">
+            <select [(ngModel)]="selectedDestination">
+              <option value="" disabled selected>Hacia</option>
+              <option *ngFor ="let result of filteredDestinationList; let i=index" value={{result.destination}} >{{result.destination}}</option>
+            </select>
+          </div>
+          <div class="search_box">
+            <button (click)="query()">Buscar</button>
+          </div>
+        </div>
+        <div class="flight_pane">  
+          <div class="flight_headers">
+            <div class="flight_number cell"> Vuelo # </div>
+            <div class="airlines cell"> Aerolinea </div>
+            <div class="departs cell"> Salida </div>
+            <div class="arrives cell"> Llegada </div>
+            <div class="nonstop cell"> Sin Escalas </div>
+          </div>
+
+          <div *ngIf="noFlightsFound">
+            -- no flights found -- 
+          </div>
+          
+          <div *ngFor="let flight of flights" class="flight_results">
+            <div class="flight_number cell"> {{flight.flightNumber}}</div>
+            <div class="airline cell"> {{flight.airline}}</div>
+
+              <div class="departs cell"> {{flight.depart | date : 'shortDate' }}</div>
+              <div class="arrives cell"> {{flight.arrive | date : 'shortDate' }}</div>
+
+
+            <div class="nonstop cell"> {{flight.nonstop}}</div>
+          </div>
+          <div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
