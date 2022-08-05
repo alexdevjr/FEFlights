@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
       this.login.reset();
     });
     /* setTimeout(() => {
-      if (usuario.nombreUsuario === 'truizdiaz' && usuario.password === 'admin123'){
+      if (usuario.nombreUsuario === 'Alex' && usuario.password === 'admin123'){
         this.login.reset();
         this.router.navigate(['/dashboard']);
       } else {
