@@ -37,17 +37,17 @@ export class FlightsService {
   }
 
   // Guardar vuelos
-  postFlight(flight: Flight) {
+  postFlight(flight: Flight): Observable<any> {
     return this.http.post(this.myAppUrl + this.myApiUrl, flight);
   }
 
   // Actualizar vuelos
-  updateFlight(flight: Flight) {
+  updateFlight(flight: Flight): Observable<any> {
     return this.http.put(this.myAppUrl + this.myApiUrl +`/${flight.id}`, flight);
   }
 
   // Eliminar vuelos registrados
-  deleteFlight(id: number) {
+  deleteFlight(id: number): Observable<any> {
     return this.http.delete(this.myAppUrl + this.myApiUrl + `/${id}`);
   }
 
