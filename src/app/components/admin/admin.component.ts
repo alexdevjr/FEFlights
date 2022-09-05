@@ -47,6 +47,7 @@ export class AdminComponent implements OnInit {
       if(data && data['origen']){
         this.refresh();
       }
+      this.refresh();
     });
   }
 
@@ -56,6 +57,7 @@ export class AdminComponent implements OnInit {
       if(data && data['afectado']){
         this.refresh();
       }
+      this.refresh();
     });
   }
 
@@ -66,6 +68,7 @@ export class AdminComponent implements OnInit {
         if(data && data['afectado']){
           this.refresh();
         }
+        this.refresh();
       });
     }
   }
