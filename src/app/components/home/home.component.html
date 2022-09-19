@@ -10,43 +10,34 @@
       <div class="container">
         <div class="search_pane"> 
           <div class="search_box">
-            <select [(ngModel)]="selectedOrigin">
-              <option value="" disabled selected>Desde</option>
-              <option *ngFor ="let result of filteredOriginList; let i=index" value={{result.origin}} >{{result.origin}}</option>
-            </select>
-          </div>
-          <div class="search_box">
-            <select [(ngModel)]="selectedDestination">
-              <option value="" disabled selected>Hacia</option>
-              <option *ngFor ="let result of filteredDestinationList; let i=index" value={{result.destination}} >{{result.destination}}</option>
-            </select>
-          </div>
-          <div class="search_box">
-            <button (click)="query()">Buscar</button>
+            <form class="actions">
+              <label>Buscar vuelo </label>
+              <input style="text-transform:uppercase;" type="text" class=" form-control" placeholder="Origen..." name="filterOrigin" [(ngModel)]="filterOrigin">&nbsp;
+              <input style="text-transform:uppercase;" type="text" class=" form-control" placeholder="Destino..." name="filterdestination" [(ngModel)]="filterdestination">
+          </form>
           </div>
         </div>
         <div class="flight_pane">  
           <div class="flight_headers">
-            <div class="flight_number cell"> Vuelo # </div>
-            <div class="airlines cell"> Aerolinea </div>
-            <div class="departs cell"> Salida </div>
-            <div class="arrives cell"> Llegada </div>
-            <div class="nonstop cell"> Sin Escalas </div>
+            <div class="flight_number cell"> VUELO # </div>
+            <div class="airlines cell"> AEROLINEA </div>
+            <div class="origins cell"> ORIGEN </div>
+            <div class="destinations cell"> DESTINO </div>
+            <div class="departs cell"> SALIDA </div>
+            <div class="arrives cell"> LLEGADA </div>
           </div>
-
+          <br>
           <div *ngIf="noFlightsFound">
-            -- no flights found -- 
+            -- NO SE ENCONTRARON VUELOS -- 
           </div>
           
-          <div *ngFor="let flight of flights" class="flight_results">
+          <div *ngFor="let flight of flights | origin:filterOrigin | destination:filterdestination" class="flight_results">
             <div class="flight_number cell"> {{flight.flightNumber}}</div>
             <div class="airline cell"> {{flight.airline}}</div>
-
-              <div class="departs cell"> {{flight.depart | date : 'shortDate' }}</div>
-              <div class="arrives cell"> {{flight.arrive | date : 'shortDate' }}</div>
-
-
-            <div class="nonstop cell"> {{flight.nonstop}}</div>
+            <div class="origins cell"> {{flight.origin}}</div>
+            <div class="destinations cell"> {{flight.destination}}</div>
+            <div class="departs cell"> {{flight.depart | date : 'dd/MM/yyyy' }}</div>
+            <div class="arrives cell"> {{flight.arrive | date : 'dd/MM/yyyy' }}</div>
           </div>
           <div>
           </div>

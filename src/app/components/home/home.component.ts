@@ -21,6 +21,9 @@ export class HomeComponent implements OnInit {
 
   constructor(private flightsService: FlightsService) { }
 
+  filterOrigin = '';
+  filterdestination = '';
+
   ngOnInit(): void {
     const orig = this.filteredOriginList;
     const dest = this.filteredDestinationList;
@@ -35,6 +38,8 @@ export class HomeComponent implements OnInit {
       this.loading = false;
     });
 
+    this.query();
+
   }
 
   query(): void {
@@ -42,7 +47,7 @@ export class HomeComponent implements OnInit {
     const origin = this.selectedOrigin;
     const destination = this.selectedDestination;
 
-    this.flightsService.getFlights(origin, destination).subscribe(data =>{
+    this.flightsService.getAllFlights().subscribe(data =>{
       this.flights = data;
       if(data.length === 0 ) {
         this.noFlightsFound = true;

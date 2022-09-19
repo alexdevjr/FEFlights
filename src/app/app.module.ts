@@ -7,19 +7,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { AdminComponent } from './components/admin/admin.component';
-import { FlightsService } from './services/flights.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RegisterComponent } from './components/register/register.component';
-import { LoginComponent } from './components/login/login.component';
+import { OriginPipe } from './pipes/origin.pipe';
+import { DestinationPipe } from './pipes/destination.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AdminComponent,
-    RegisterComponent,
-    LoginComponent
+    OriginPipe,
+    DestinationPipe
   ],
   imports: [
     BrowserModule,
